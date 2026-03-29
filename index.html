@@ -347,8 +347,8 @@ const ytScript = document.createElement('script');
 ytScript.src = 'https://www.youtube.com/iframe_api';
 document.head.appendChild(ytScript);
 
-function onYouTubeIframeAPIReady() {
-  const origin = window.location.protocol === 'file:' ? 'https://www.youtube.com' : window.location.origin;
+window.onYouTubeIframeAPIReady = function() {
+  const origin = window.location.origin || 'https://www.youtube.com';
   ytPlayer = new YT.Player('yt-frame', {
     videoId: YT_ID,
     playerVars: {
